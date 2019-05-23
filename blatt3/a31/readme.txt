@@ -1,15 +1,15 @@
     Autor: Michael Krasser
     Shell und Prozesse SS 2019, IF8
-    Blatt2: Prozesse unter Linux
-    Aufgabe 21
+    Blatt3: Synchronisation
+    Aufgabe 23
 
     Vorbedingungen:
-    Das aktuelle Arbeitsverzeichnis ist blatt2/a21
+    Das aktuelle Arbeitsverzeichnis ist blatt3/a31
 
     Generierung:
     make
     (Makefile liegt im aktuellen Arbeitsverzeichnis)
 
     Bedienung:
-    ./a21&
-
+    ./a31
+    

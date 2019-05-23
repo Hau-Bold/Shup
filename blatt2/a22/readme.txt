@@ -4,7 +4,7 @@
     Aufgabe 22
 
     Vorbedingungen:
-    Das aktuelle Arbeitsverzeichnis ist blatt2/a25
+    Das aktuelle Arbeitsverzeichnis ist blatt2/a22
 
     Generierung:
     make

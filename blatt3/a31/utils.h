@@ -1,6 +1,13 @@
-#include <stdlib.h>
-#include <time.h>
+#ifndef __UTILS_H__
+#define __UTILS_H__
 
-int getCountOfProcessesInNextMinute(void);
-int getNextDuration(void);
-void doNothing(void);
+#include <stdlib.h>
+//#include <time.h>
+
+/*
+ *dtermines the count of processes
+ *
+ **/
+int getNextCountOfProcesses(void);
+
+#endif

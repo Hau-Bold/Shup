@@ -1,10 +1,10 @@
 .PHONY: all
 
 all: libs
-	cc -Wall -o a13 a13.c libs/*
+	cc -Wall -o a31 a31.c libs/*
 
 clean:
-	rm a13
+	rm a31
 	rm -rf libs/
 
 libsdir:

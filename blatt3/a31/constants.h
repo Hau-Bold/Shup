@@ -1,3 +1,7 @@
+#ifndef __CONSTANTS_H__
+#define __CONSTANTS_H__
+
+
 // Durations
 #define COUNT_OF_DURATIONS 4
 
@@ -12,6 +16,10 @@
 //!duration of backup
 #define DURATION_BACKUP 3 //duration of backup process
 
+#define INCREMENT '+'
+
+#define DECREMENT '-'
+
 // codes for color
 #define GREEN "\033[1;32m"
 
@@ -22,6 +30,16 @@
 #define YELLOW "\033[01;33m"
 
 #define MAGENTA "\033[1;35m"
+
+#define BOLD_BLUE "\033[1;34m"
+
+#define INFO_SHARED_MEMORY "%sCREATED SHARED MEMORY.Id: %d%s\n"
+
+#define INFO_SEMAPHORE "%sCREATED SEMAPHORE.Id: %d%s\n"			
+
+#define INFO_SHARED_MEMORY_ATTACHED "%sSHARED MEMORY ATTACHED%s\n"
+
+#define ERROR_SHARED_MEMORY_ATTACHING "%sERROR ATTACHING SHARED MEMORY%s\n"
 
 #define MEMORY_ALLOC_ERROR "%sERROR MEMORY ALLOCATION%s\n"
 
@@ -46,7 +64,11 @@
 
 #define ERROR_WAIT "%sERROR AT WAIT%s\n"
 
-#define MSG_LAUNCH_PROCESSES "%s Lauch %d processe/s in next minute%s\n"
+#define ERROR_SEMAPHORE "%sERROR AT SEMAPHORE!%s\n"
+
+#define ERROR_SHARED_MEMORY "%sERROR AT SHARED MEMORY!%s\n"
+
+#define MSG_LAUNCH_PROCESSES "%sLauch %d process/es in next minute%s\n"
 
 #define EXIT_CMD "schluss"
 
@@ -62,4 +84,4 @@
 
 #define MSG_SIGINT "%sSIGINT <2> received!\n I kill myself.%s\n"
 
-
+#endif

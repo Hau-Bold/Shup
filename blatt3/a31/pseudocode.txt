@@ -1,0 +1,56 @@
+semaphore sem_backUp(0)   //Regelt exklusiven Zugriff auf das Dateisystem des backUp-Prozesses, mit 0 initialisiert
+semaphore sem_reader(0)   // Regelt Zugriff der Leser auf das Dateisystem, mit 0 initialisert.Erst wenn reader den Wert 0 hat, kann der backUp-Prozess arbeiten
+semaphre sem_Exit(0)      //Unterbindet die Anmeldung neuer Leser wenn Applikation beendet werden soll, mit 0 initialisiert.
+
+void backUp(void)
+{
+  while(1)
+  {
+   sleep(8); //warte zunächst 8 Minuten
+   
+   wait(sem_backUp);     // fordere Ressource an
+   wait(sem_reader,0);   // warte bis alle Leser beendet sind
+   führeBackUpAus();     // arbeite im kritischen Bereich für 3 Minuten
+   signal(sem_backUp);   // Freigabe des ressoure
+  }
+}
+
+void reader(int dauer)
+{
+ wait(sem_backUp);      // warte bis backUp-Prozess beendet ist
+ wait(sem_reader);      // melde das weiterer Leser die Ressource benutzt
+ lese(dauer);           // arbeite im kritischen Bereich für dauer
+ signal(sem_reader);    // melde das Leser fertig ist
+ exit(0);               //Beende Leser
+}
+
+int main()
+{
+ backUp();      // generiere einen backUp-Prozess
+ 
+ while(1)
+  {
+   wait(sem_Exit,0);     //so lange Anwendung nicht beendet werden soll, sind neue Leser zulässig
+   int n=bestimmeAnzahlProzesseInNächsterMinute();
+   
+   for(int i=0;i<n;i++)
+      {
+       int d = bestimmeLesedauer();
+       reader(d);
+      } 
+
+   sleep(1)            //warte bis nächste Minute anbricht
+  } 
+
+}
+
+//durch Signalhandler auszuführen
+void onExit(void)
+ {
+   signal(sem_Exit);       //sperre Dateisystem für neue Leser
+   wait(sem_backUp,0);     //warte bis backUp beendet ist;
+   wait(sem_reader,0);     //warte bis letzter zugelassener Leser beendet ist
+   freigabeSonstigerRessourcen();  //Freigabe von Speicher
+   exitApplication();                //beende Anwendung    
+
+ }
