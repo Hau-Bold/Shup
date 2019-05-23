@@ -5,15 +5,31 @@
 #include<stdlib.h>
 #include<signal.h>
 
-/*
-*<summary>
-* 1) Programm soll mit 4 verschiedenen Zeichenketten als Übergabeparameter starten
-* 2) Elternprozess: Ausgabe erstes Argument, start von drei Kindprozessen, i-ters child soll i+1-tes Argument ausgeben
-*</summary>
+/**
+ * Aufgabe A22: Warten und beenden von Kindprozessen
+ * Ändern Sie das Programm aus Aufgabe A21 so, dass
+ * - Sie es mit vier verschiedenen Zeichenketten als Übergabeparametern starten.
+ * Der Elternprozess soll
+ * - einmal das erste Übergabeargument ausgeben und dann
+ * - drei Kindprozesse starten, die ihrerseits das zweite, dritte bzw. vierte Übergabeargument
+ * ausgeben.
+ * Kindprozess 1 und 2 laufen wie in Aufgabe A21 in einer Endlosschleife.
+ * Der dritte Kindprozess ist so abzuändern, dass er
+ * - eine Sekunde wartet (sleep()-Systemaufruf benutzen),
+ * - sich dann selbst regulär beendet (exit()-Systemaufruf oder verlassen der main()-
+ * Funktion mit return) und
+ * - als Returnwert 2 zurück gibt.
+ * Der Elternprozess soll nach Starten aller Kindprozesse in der nachfolgend angegebenen
+ * Reihenfolge tun:
+ * 1. mittels des sleep()-Systemaufrufs 2 Sekunden warten,
+ * 2. den ersten Kindprozess mit dem Signal SIGTERM (numerisch 15) beenden (kill()-
+ * Systemaufruf benutzen),
+ * 3. den zweiten und dritten Prozess mit dem Signal SIGKILL (numerisch 9) beenden
+ * 4. und dann erst den jeweiligen Endestatus der Kindprozesse abholen und ausgeben (verwenden
+ * Sie dabei den wait()-Systemaufruf) und
+ * 5. sich abschließend selbst beenden.
+ * Untersuchen und vergleichen Sie die Endestatuswerte der Kindprozesse.
 */
-//kill process : kill -9 <pid>
-//running in back ground : command &
-//verliert Kind Vater, wird Init Prozess Ersatzvater(dieser erlöst auch alle Kindprozesse im Zustand Zombie)
 
 #define RED "\033[1;31m"  
 #define DEFAULT "\x1B[37m"  //white
@@ -57,7 +73,7 @@ int main(int argc,char* argv[])
 		}
 	}
 
-//son 3: waiting one second and then termintes itself
+//son 3: waiting one second and then terminates itself (called exit(2))
         pid = fork();
 	if(pid==0)
 	{

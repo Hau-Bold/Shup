@@ -4,17 +4,12 @@
 #include<signal.h>
 #include<string.h>
 #include<stdlib.h>
-//kill process : kill -9 <pid>
-//running in back ground : command &
-//verliert Kind Vater, wird Init Prozess Ersatzvater(dieser erlöst auch alle Kindprozesse im Zustand Zombie)
-//kill send SIGTERM by default
-//sigterm: process may react (if 9 process can't react)
-//
 
 /**
 Aufgabe 23 Im Programm auf Signale reagieren
 Entwickeln Sie ein Programm, das auf die Signale SIGTERM und SIGINT reagiert. Das Programm soll nach dem Start eine Meldung auf stdout ausgeben, dass es gestartet wurde und wie es sich verhält, d.h. auf welche Signale es wie reagiert. Danach soll das Programm in einer Endlosschleife laufen. Das Programm soll bei Eintreffen eines der Signale SIGTERM oder SIGINT auf der Konsole ausgeben, dass das entsprechende Signal eingetroffen ist. Nachdem das dritte Mal ein Signal SIGTERM oder SIGINT eingetroffen ist, soll sich das Programm selbst beenden und als Endestatus den Wert 5 zurück geben.
 */
+
 #define MSG_SIGTERM "SIGTERM <15> received.\n"
 #define MSG_SIGINT "SIGINT <2> received.\n"
 

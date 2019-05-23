@@ -2,11 +2,11 @@
 #include<sys/types.h>
 #include<sys/wait.h>
 #include<unistd.h> //include exec family
-#include<stdlib.h>  // for perror!
+#include<stdlib.h>  // for EXIT_FAILURE etc.... 
 #include<string.h>
 #include<errno.h>
 
-/*
+/**
 Aufgabe A24:
 Anderes Programm starten
 Entwickeln Sie ein Programm "Starten", das einen Kindprozess erzeugt, der dann sofort mit einem exec-Systemaufruf ein komplett anderes Programm P-neu (etwa eine einfache „Hallo Welt!“-Anwendung) ausführt, während der Elternprozess auf das Ende des Kindprozesses wartet.
@@ -15,7 +15,7 @@ a. einem existierenden P-neu, welches keine Aufrufparameter benötigt.
 b. einem nicht existierenden P-neu.
 c. einem existierenden P-neu, welches Aufrufparameter verarbeitet. Die Aufrufparameter von P-neu sollen dabei die Aufrufparameter vom Programm "Starten" sein.
 Behandeln Sie entsprechende Fehlermeldungen des exec-Systemaufruf~Programm erzeugt Kindprozess
-**/
+*/
 
 #define RED "\033[1;31m"
 #define DEFAULT "\x1B[37m"

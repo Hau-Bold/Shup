@@ -5,7 +5,23 @@
 #include<unistd.h>//for gethostname,getcwd
 #include "utils.h"
 #include "constants.h"
-
+/* Aufgabe A25: Midi-Shell */
+/* Schreiben Sie Ihre eigene “Midi-Shell“, die andere Programme ausführen kann. */
+/* Ihre Midi-Shell soll nach dem Start den Pfad des aktuellen Verzeichnisses, der für Ihre MidiShell */
+/* gilt, anzeigen. Anschließend wird ein Prompt ausgegeben, der anzeigt, dass die MidiShell */
+/* Benutzereingaben erwartet. Nach Eingabe eines Programmnamens und zugehöriger */
+/* Kommandozeilenparameter soll der entsprechende Prozess gestartet und auf das Ende des */
+/* gestarteten Kindprozesses gewartet werden. Danach gibt die Midi-Shell wieder einen Prompt */
+/* aus und wartet auf die Eingabe weiterer Befehle, bis durch Eingabe der Zeichenkette */
+/* schluss die Shell beendet wird. */
+/* Programme, deren Pfad explizit angegeben ist, also mit "/", "./" oder "../" beginnt, können */
+/* unmittelbar ausgeführt werden. Für Programmaufrufe ohne Pfadangabe muss der absolute */
+/* Pfad durch Durchsuchen des Verzeichnisbaums entsprechend des Inhalts der PATHUmgebungsvariablen */
+/* erst ermittelt werden. */
+/* Achten Sie darauf, dass auch Kommandozeilenparameter übergeben werden können! */
+/* Stützen Sie sich bei Ihrer Lösung NICHT auf einen exec-Aufruf mit "p" am Ende (z.B. */
+/* execvp()), da dieser die Aufgabe automatisch lösen würde. */
+/* Die Nutzung der Systemfunktion system() ist VERBOTEN! */
 //!to save user
 char * user=NULL;
 

@@ -19,3 +19,5 @@
    (auch hierfür liegt eine Makefile bereit)
     Mit dem Schlüsselwort "schluss" kann die Shell beendet werden.
 
+   Hinweis: Überflüssige Fehlermeldungen können in constants.h durch Setzen des Flags VERBOSE=0 vermieden werden
+
